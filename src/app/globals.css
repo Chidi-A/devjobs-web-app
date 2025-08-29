@@ -1,26 +1,120 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Colors */
+  --violet: #9e7f66;
+  --light-violet: #939bf4;
+  --very-dark-blue: #19202d;
+  --midnight: #121721;
+
+  /* Secondary Colors */
+  --white: #ffffff;
+  --light-grey: #f4f6f8;
+  --gray: #9daec2;
+  --dark-grey: #6e8098;
+
+  /* Typography */
+  --font-kumbh: var(--font-kumbh-sans);
+
+  /* Font sizes in rem */
+  --text-h1: 1.75rem; /* 28px */
+  --text-h2: 1.5rem; /* 24px */
+  --text-h3: 1.25rem; /* 20px */
+  --text-h4: 0.875rem; /* 14px */
+  --text-body: 1rem; /* 16px */
+
+  /* Line heights */
+  --leading-h1: 2.125rem; /* 34px */
+  --leading-h2: 1.8125rem; /* 29px */
+  --leading-h3: 1.5rem; /* 24px */
+  --leading-h4: 1.125rem; /* 18px */
+  --leading-body: 1.625rem; /* 26px */
+
+  /* Default theme colors */
+  --background: var(--light-grey);
+  --foreground: var(--very-dark-blue);
 }
 
 @theme inline {
+  /* Primary Colors */
+  --color-violet: var(--violet);
+  --color-light-violet: var(--light-violet);
+  --color-very-dark-blue: var(--very-dark-blue);
+  --color-midnight: var(--midnight);
+
+  /* Secondary Colors */
+  --color-white: var(--white);
+  --color-light-grey: var(--light-grey);
+  --color-gray: var(--gray);
+  --color-dark-grey: var(--dark-grey);
+
+  /* Typography */
+  --font-sans: var(--font-kumbh);
+  --font-mono: var(--font-geist-mono);
+
+  /* Font sizes */
+  --font-size-h1: var(--text-h1);
+  --font-size-h2: var(--text-h2);
+  --font-size-h3: var(--text-h3);
+  --font-size-h4: var(--text-h4);
+  --font-size-body: var(--text-body);
+
+  /* Line heights */
+  --line-height-h1: var(--leading-h1);
+  --line-height-h2: var(--leading-h2);
+  --line-height-h3: var(--leading-h3);
+  --line-height-h4: var(--leading-h4);
+  --line-height-body: var(--leading-body);
+
+  /* Theme colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--midnight);
+    --foreground: var(--white);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(
+    --font-kumbh-sans
+  ); /* Change from --font-kumbh to --font-kumbh-sans */
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* Typography utility classes */
+.text-h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-h1);
+  font-weight: 700;
+}
+
+.text-h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  font-weight: 700;
+}
+
+.text-h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  font-weight: 700;
+}
+
+.text-h4 {
+  font-size: var(--text-h4);
+  line-height: var(--leading-h4);
+  font-weight: 700;
+}
+
+.text-body {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-weight: 400;
 }
