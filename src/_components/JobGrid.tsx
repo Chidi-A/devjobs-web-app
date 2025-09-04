@@ -1,8 +1,8 @@
-import { JobDataJSON } from '@/types/job';
+import { JobWithCompany } from '@/types/job';
 import JobCard from './JobCard';
 
 interface JobGridProps {
-  jobs: JobDataJSON[];
+  jobs: JobWithCompany[];
 }
 
 export default function JobGrid({ jobs }: JobGridProps) {

@@ -30,9 +30,60 @@
   --leading-h4: 1.125rem; /* 18px */
   --leading-body: 1.625rem; /* 26px */
 
-  /* Default theme colors */
+  /* Default to light theme */
   --background: var(--light-grey);
   --foreground: var(--very-dark-blue);
+  --card-bg: var(--white);
+  --header-bg: var(--very-dark-blue);
+  --border-color: #e5e7eb;
+  --filter-bg: var(--white);
+  --input-bg: var(--white);
+  --input-text: var(--very-dark-blue);
+  --placeholder-color: var(--gray);
+  --text-secondary: var(--dark-grey);
+  --divider-color: var(--dark-grey);
+  --checkbox-bg: #e5e7eb;
+  --checkbox-text: var(--very-dark-blue);
+  --company-btn-bg: #e2e3ef;
+  --company-btn-text: #5964e0;
+}
+
+/* Dark theme colors */
+.dark {
+  --background: var(--midnight);
+  --foreground: var(--white);
+  --card-bg: var(--very-dark-blue);
+  --header-bg: var(--very-dark-blue);
+  --border-color: #374151;
+  --filter-bg: var(--very-dark-blue);
+  --input-bg: var(--very-dark-blue);
+  --input-text: var(--white);
+  --placeholder-color: var(--gray);
+  --text-secondary: var(--gray);
+  --divider-color: var(--gray);
+  --checkbox-bg: #313743;
+  --checkbox-text: var(--white);
+  --company-btn-bg: #303642;
+  --company-btn-text: var(--white);
+}
+
+/* Light theme colors (explicit) */
+.light {
+  --background: var(--light-grey);
+  --foreground: var(--very-dark-blue);
+  --card-bg: var(--white);
+  --header-bg: var(--very-dark-blue);
+  --border-color: #e5e7eb;
+  --filter-bg: var(--white);
+  --input-bg: var(--white);
+  --input-text: var(--very-dark-blue);
+  --placeholder-color: var(--gray);
+  --text-secondary: var(--dark-grey);
+  --divider-color: var(--dark-grey);
+  --checkbox-bg: #e5e7eb;
+  --checkbox-text: var(--very-dark-blue);
+  --company-btn-bg: #e2e3ef;
+  --company-btn-text: #5964e0;
 }
 
 @theme inline {
@@ -69,23 +120,31 @@
   /* Theme colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-}
+  --color-card-bg: var(--card-bg);
+  --color-header-bg: var(--header-bg);
+  --color-border: var(--border-color);
+  --color-filter-bg: var(--filter-bg);
+  --color-input-bg: var(--input-bg);
+  --color-input-text: var(--input-text);
+  --color-placeholder: var(--placeholder-color);
+  --color-text-secondary: var(--text-secondary);
+  --color-divider: var(--divider-color);
+  --color-checkbox-bg: var(--checkbox-bg);
+  --color-checkbox-text: var(--checkbox-text);
+  --color-company-btn-bg: var(--company-btn-bg);
+  --color-company-btn-text: var(--company-btn-text);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--midnight);
-    --foreground: var(--white);
-  }
+  /* Dark mode configuration */
+  --dark-mode: class;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(
-    --font-kumbh-sans
-  ); /* Change from --font-kumbh to --font-kumbh-sans */
+  font-family: var(--font-kumbh-sans);
   font-size: var(--text-body);
   line-height: var(--leading-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Typography utility classes */

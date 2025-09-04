@@ -1,15 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useTheme } from './theme-context';
 
 export default function Header() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    // You can add theme switching logic here later
-  };
+  const { theme, toggleTheme } = useTheme();
+  const isDarkMode = theme === 'dark';
 
   return (
     <header className="h-[10.125rem] bg-[#19202d] relative overflow-hidden rounded-bl-[100px]">
@@ -28,13 +25,15 @@ export default function Header() {
         <div className="max-w-[80rem] mx-auto px-[5%] h-full flex items-center justify-between">
           {/* Left side - Logo */}
           <div className="flex items-center">
-            <Image
-              src="/devjobs-logo.svg"
-              alt="devjobs"
-              width={115}
-              height={32}
-              className="h-8 w-auto"
-            />
+            <Link href="/">
+              <Image
+                src="/devjobs-logo.svg"
+                alt="devjobs"
+                width={115}
+                height={32}
+                className="h-8 w-auto"
+              />
+            </Link>
           </div>
 
           {/* Right side - Theme toggle */}
@@ -45,8 +44,10 @@ export default function Header() {
                 src="/sun.svg"
                 alt="Sun icon"
                 width={20}
-                height={18.6}
-                className="text-white"
+                height={19} // Changed from 18.6 to maintain aspect ratio
+                className={`text-white transition-opacity duration-200 ${
+                  isDarkMode ? 'opacity-50' : 'opacity-100'
+                }`}
               />
 
               {/* Toggle switch */}
@@ -71,7 +72,9 @@ export default function Header() {
                 alt="Moon icon"
                 width={12}
                 height={12}
-                className="text-white"
+                className={`text-white transition-opacity duration-200 ${
+                  isDarkMode ? 'opacity-100' : 'opacity-50'
+                }`}
               />
             </div>
           </div>

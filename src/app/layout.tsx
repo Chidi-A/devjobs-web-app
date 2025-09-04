@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Kumbh_Sans } from 'next/font/google';
+import { ThemeProvider } from '../_components/theme-context';
 import Header from '../_components/Header';
 import './globals.css';
 
@@ -25,8 +26,10 @@ export default function RootLayout({
         className={`${kumbhSans.variable} antialiased`}
         suppressHydrationWarning={true}
       >
-        <Header />
-        {children}
+        <ThemeProvider>
+          <Header />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

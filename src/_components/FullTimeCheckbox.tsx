@@ -1,15 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface FullTimeCheckboxProps {
   onFullTimeChange: (isFullTime: boolean) => void;
+  checked?: boolean;
 }
 
 export default function FullTimeCheckbox({
   onFullTimeChange,
+  checked = false,
 }: FullTimeCheckboxProps) {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(checked);
+
+  // Sync with external checked state when it changes (e.g., from URL)
+  useEffect(() => {
+    setIsChecked(checked);
+  }, [checked]);
 
   const handleChange = () => {
     const newChecked = !isChecked;
@@ -20,10 +27,9 @@ export default function FullTimeCheckbox({
   return (
     <div className="flex items-center space-x-3">
       <div
-        className="w-5 h-5 rounded cursor-pointer transition-colors duration-200 flex items-center justify-center"
-        style={{
-          backgroundColor: isChecked ? '#5964E0' : '#313743',
-        }}
+        className={`w-5 h-5 rounded cursor-pointer transition-colors duration-300 flex items-center justify-center ${
+          isChecked ? 'bg-[#5964E0]' : 'bg-[var(--checkbox-bg)]'
+        }`}
         onClick={handleChange}
       >
         {isChecked && (
@@ -43,7 +49,9 @@ export default function FullTimeCheckbox({
           </svg>
         )}
       </div>
-      <span className="text-white font-bold">Full Time Only</span>
+      <span className="text-[var(--checkbox-text)] font-bold transition-colors duration-300">
+        Full Time Only
+      </span>
     </div>
   );
 }
