@@ -36,12 +36,30 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
         {/* Job Header Card */}
         <div className="relative">
           {/* Job Header Content */}
-          <div className="max-w-3xl mx-auto px-6 relative -mt-10">
-            <div className="bg-[var(--card-bg)] rounded-md overflow-hidden shadow-lg transition-colors duration-300">
-              <div className="md:flex md:items-stretch">
-                {/* Company Logo */}
+          <div className="max-w-3xl mx-auto px-6 relative -mt-10 pt-6 md:pt-0">
+            <div className="bg-[var(--card-bg)] rounded-md overflow-visible shadow-lg transition-colors duration-300 relative">
+              {/* Mobile: Centered Logo (Absolute positioned) */}
+              <div className="md:hidden absolute -top-6 left-1/2 -translate-x-1/2 z-10">
                 <div
-                  className="h-36 md:h-auto md:w-36 flex items-center justify-center relative"
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-md"
+                  style={{
+                    backgroundColor: job.company.logo_background || '#5964E0',
+                  }}
+                >
+                  <Image
+                    src={job.company.logo_url || '/default-logo.svg'}
+                    alt={`${job.company.name} logo`}
+                    width={24}
+                    height={24}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="md:flex md:items-stretch">
+                {/* Desktop: Company Logo (Hidden on mobile) */}
+                <div
+                  className="hidden md:flex md:h-auto md:w-36 items-center justify-center relative"
                   style={{
                     backgroundColor: job.company.logo_background || '#5964E0',
                   }}
@@ -56,7 +74,7 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
                 </div>
 
                 {/* Company Info */}
-                <div className="flex-1 p-8 md:flex md:items-center md:justify-between">
+                <div className="flex-1 p-8 pt-12 md:pt-8 md:flex md:items-center md:justify-between text-center md:text-left">
                   <div>
                     <h1 className="text-h2 text-[var(--foreground)] mb-2 transition-colors duration-300">
                       {job.company.name}
@@ -68,7 +86,7 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
                   </div>
 
                   {/* Company Site Button */}
-                  <div className="mt-6 md:mt-0 flex justify-end">
+                  <div className="mt-6 md:mt-0 flex justify-center md:justify-end">
                     {job.company.website && (
                       <Link
                         href={job.company.website}

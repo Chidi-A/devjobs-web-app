@@ -42,7 +42,7 @@ export default async function Home({
             <FilterBar />
           </Suspense>
         </div>
-        <main className="relative z-10 mt-20 mb-40">
+        <main className="relative z-10 mt-8 md:mt-16 mb-40">
           <JobsContainer initialData={initialData} />
         </main>
       </div>

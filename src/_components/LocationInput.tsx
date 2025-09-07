@@ -48,13 +48,14 @@ export default function LocationInput({
 
   return (
     <div className="relative">
-      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+      <div className="absolute inset-y-0 left-0  flex items-center pointer-events-none">
         <Image
           src="/icon-location.svg"
           alt="Location"
           width={20}
           height={20}
           className="opacity-75"
+          style={{ width: 'auto', height: 'auto' }}
         />
       </div>
       <input
@@ -62,7 +63,7 @@ export default function LocationInput({
         value={internalValue}
         onChange={handleChange}
         placeholder={placeholder}
-        className="w-full pl-12 pr-4 py-4 bg-[var(--input-bg)] text-[var(--input-text)] border-none focus:outline-none transition-colors duration-300"
+        className="w-full pl-8 pr-4 py-4 bg-[var(--input-bg)] text-[var(--input-text)] border-none focus:outline-none transition-colors duration-300"
       />
     </div>
   );

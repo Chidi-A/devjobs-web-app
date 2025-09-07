@@ -24,6 +24,7 @@ export default function JobCard({ job }: JobCardProps) {
           width={28}
           height={28}
           className="object-contain"
+          style={{ width: 'auto', height: 'auto' }}
         />
       </div>
 

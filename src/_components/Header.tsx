@@ -9,14 +9,29 @@ export default function Header() {
   const isDarkMode = theme === 'dark';
 
   return (
-    <header className="h-[10.125rem] bg-[#19202d] relative overflow-hidden rounded-bl-[100px]">
-      {/* Background pattern overlay */}
+    <header className="h-[10.125rem] bg-[#19202d] relative overflow-hidden md:rounded-bl-[100px]">
+      {/* Background pattern overlay - Mobile */}
+      <Image
+        src="/bg-pattern-header-mobile.svg"
+        alt=""
+        fill
+        className="object-cover block md:hidden"
+      />
+
+      {/* Background pattern overlay - Tablet */}
+      <Image
+        src="/bg-pattern-header-tablet.svg"
+        alt=""
+        fill
+        className="object-cover hidden md:block lg:hidden"
+      />
+
+      {/* Background pattern overlay - Desktop */}
       <Image
         src="/header-bg.svg"
-        alt="Header background"
+        alt=""
         fill
-        className="object-cover"
-        priority
+        className="object-cover hidden lg:block"
       />
 
       {/* Top padding container */}
@@ -37,7 +52,7 @@ export default function Header() {
           </div>
 
           {/* Right side - Theme toggle */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ">
             <div className="flex items-center gap-3">
               {/* Sun icon */}
               <Image
@@ -53,7 +68,7 @@ export default function Header() {
               {/* Toggle switch */}
               <button
                 onClick={toggleTheme}
-                className={`relative w-12 h-6 rounded-full transition-all duration-300 ${
+                className={`relative w-12 h-6 rounded-full transition-all duration-300 cursor-pointer ${
                   isDarkMode ? 'bg-[#939bf4]' : 'bg-white'
                 }`}
               >
