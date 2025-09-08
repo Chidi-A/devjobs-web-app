@@ -4,7 +4,7 @@ import { useTheme as useNextTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 
 export function useTheme() {
-  const { theme, setTheme, systemTheme, resolvedTheme } = useNextTheme();
+  const { theme, setTheme, resolvedTheme } = useNextTheme();
   const [mounted, setMounted] = useState(false);
 
   // Wait for hydration to complete
